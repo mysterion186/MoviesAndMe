@@ -1,18 +1,29 @@
 import React from 'react'
-import {View,Button,TextInput,StyleSheet} from 'react-native'
+import {View,Button,TextInput,StyleSheet,FlatList,Text} from 'react-native'
+import film from '../helpers/filmData'
+import FilmItem from '../Components/filmItem'
 
 
 class Search extends React.Component {
     render() {
         return ( 
-        <View style={{marginTop : 60}}>
+        <View style={styles.main_container}>
             <TextInput placeholder="Titre du film" style={styles.textinput}/>
-            <Button style = {{ height:50, backgroundColor : '#000000'}}title = "Rechercher" onPress={() => {}}/>
+            <FlatList 
+                data = {film} 
+                keyExtractor = {(item) => item.id.toString()} // il faut tjs une key (équivalent pk dans django) cette méthode permet de donner une key par défaut (on remplace id par key en gros )
+                renderItem= {({item}) => <FilmItem film={item}/>}
+            />
+            <Button title = "Rechercher" onPress={() => {}}/>
         </View>
         )
     }
 }
 const styles = StyleSheet.create({
+    main_container: {
+        marginTop:100,
+        flex:1,
+    },
     textinput: {
         marginLeft : 15,
         marginRight : 15,
@@ -23,4 +34,5 @@ const styles = StyleSheet.create({
         }
     }
 )
+
 export default Search
