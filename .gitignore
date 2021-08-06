@@ -8,6 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+# on ne dévoile pas la clés d'API 
+API/TMDBApi.js 
 # macOS
 .DS_Store
