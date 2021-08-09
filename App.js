@@ -25,8 +25,8 @@ return (
       <Stack.Navigator>
  
             <Stack.Screen name="Rechercher" component={Search} />
- 
       </Stack.Navigator>
+      {/* test  */}
  
 </NavigationContainer> )
  
