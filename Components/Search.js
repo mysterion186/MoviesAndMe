@@ -1,8 +1,7 @@
 // Components/Search.js
-
 import React from 'react'
-import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
-import FilmItem from './FilmItem'
+import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator, Keyboard } from 'react-native'
+import FilmItem from './filmItem'
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
 
 class Search extends React.Component {
@@ -65,7 +64,9 @@ class Search extends React.Component {
           onChangeText={(text) => this._searchTextInputChanged(text)}
           onSubmitEditing={() => this._searchFilms()}
         />
-        <Button title='Rechercher' onPress={() => this._searchFilms()}/>
+        <Button title='Rechercher' onPress={() => {this._searchFilms(),
+        Keyboard.dismiss()}
+        }/>
         <FlatList
           data={this.state.films}
           keyExtractor={(item) => item.id.toString()}
@@ -86,7 +87,7 @@ class Search extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    marginTop: 20
+    marginTop: 80
   },
   textinput: {
     marginLeft: 5,
